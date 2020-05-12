@@ -22,17 +22,37 @@
 <script>
 export default {
   name: 'Login',
-  props: {},
   data () {
     return {
       email: '',
-      password: ''
+      password: '',
+      error: false
     }
   },
-  metods: {
+  updated () {
+    if (localStorage.token) {
+      this.$router.replace(this.$route.query.redirect || '/home')
+    }
+  },
+  methods: {
     login () {
-      console.log(this.email)
-      console.log(this.password)
+      this.$http.post('https://localhost:44368/api/Account/login', { email: this.email, password: this.password })
+        .then(request => this.loginSuccessful(request))
+        .catch(() => this.loginFailed())
+    },
+    loginSuccessful (req) {
+      if (!req.data.token) {
+        this.loginFailed()
+        return
+      }
+      this.error = false
+      localStorage.token = req.data.token
+      console.log(req.data.token)
+      this.$router.replace(this.$route.query.redirect || '/home')
+    },
+    loginFailed () {
+      this.error = 'Login failed!'
+      delete localStorage.token
     }
   }
 }
@@ -200,6 +220,7 @@ form {
 .sign-in {
   left: 0;
   z-index: 2;
+
 }
 
 .sign-up {

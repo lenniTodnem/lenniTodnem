@@ -34,4 +34,21 @@ body{
   background-position: center center;
   background-attachment: fixed;
 }
+
+.navbar {
+    position: top;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+}
+
 </style>
