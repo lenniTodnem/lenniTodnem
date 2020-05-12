@@ -164,15 +164,15 @@ button {
   text-transform: uppercase;
   cursor: pointer;
   transition: transform .1s ease-in;
+}
 
-  &:active {
+  .button:active {
     transform: scale(.9);
   }
 
-  &:focus {
+  .button:focus {
     outline: none;
   }
-}
 
 button.invert {
   background-color: transparent;
@@ -210,12 +210,12 @@ form {
       0 -1px 1px #fff,
       0 1px 0 #fff;
     overflow: hidden;
+  }
 
-    &:focus {
+    .input:focus {
       outline: none;
       background-color: #fff;
     }
-  }
 
 .sign-in {
   left: 0;
